@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Cosmos;
 using System;
 using System.Net;
+using System.Runtime.CompilerServices;
 
 namespace AbpConf.ServerlessAPI
 {
     public class FunctionAppCall
     {
         private static readonly CosmosClient cosmosClient = new CosmosClient(CosmosDbConfiguration.EndpointUri, CosmosDbConfiguration.PrimaryKey);
-
         [Function("CosmosDbCrud")]
         public async Task<HttpResponseData> CosmosDbCrud(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", "put", "delete", Route = "items/{id?}")] 
@@ -25,7 +25,11 @@ namespace AbpConf.ServerlessAPI
             switch (req.Method)
             {
                 case "GET":
-                    return await CosmosDbOperations.ReadItemAsync(req, container, id);
+                     if(id is null){
+                        return await CosmosDbOperations.ReadItemAsync(req, container); //Get all result
+                     }else{
+                        return await CosmosDbOperations.ReadItemAsync(req, container,id);
+                     }                    
                 case "POST":
                     return await CosmosDbOperations.CreateItemAsync(req, container);
                 case "PUT":

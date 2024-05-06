@@ -16,7 +16,7 @@ namespace AbpConf.ServerlessAPI
             await response.WriteStringAsync("Item was added successfully");
             return response;
         }
-        public static async Task<HttpResponseData> ReadItemAsync(HttpRequestData req, Container container, string? id)
+        public static async Task<HttpResponseData> ReadItemAsync(HttpRequestData req, Container container, string id)
         {
             try
             {
@@ -31,6 +31,31 @@ namespace AbpConf.ServerlessAPI
                 var response = req.CreateResponse(HttpStatusCode.NotFound);
                 await response.WriteStringAsync("Item does not exist");
                 return response;
+            }
+        }
+        public static async Task<HttpResponseData> ReadItemAsync(HttpRequestData req, Container container)
+        {
+            try
+            {
+                List<dynamic> returnedArray = new List<dynamic>();
+                FeedIterator<dynamic> feedIterator = container.GetItemQueryIterator<dynamic>();                
+                while (feedIterator.HasMoreResults)
+                {
+                    foreach (dynamic item in await feedIterator.ReadNextAsync())
+                    {
+                        returnedArray.Add(item);
+                    }
+                }                
+                var response = req.CreateResponse(HttpStatusCode.OK);
+                string responsestring = JsonConvert.SerializeObject(returnedArray);
+                await response.WriteStringAsync(responsestring);
+                return response;
+            }
+            catch (CosmosException e)
+            {
+                var errorResponse = req.CreateResponse(HttpStatusCode.InternalServerError);
+                await errorResponse.WriteStringAsync($"Error occurred: {e.Message}");
+                return errorResponse;
             }
         }
         public static async Task<HttpResponseData> UpdateItemAsync(HttpRequestData req, Container container, string id)
