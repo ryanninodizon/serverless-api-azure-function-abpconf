@@ -12,8 +12,7 @@ namespace AbpConf.ServerlessAPI
 {
     public class FunctionAppCall
     {
-        private static readonly CosmosDbConfiguration cosmosConfig = CosmosDbConfiguration.GetConfiguration();
-        private static readonly CosmosClient cosmosClient = new CosmosClient(cosmosConfig.EndpointUri, cosmosConfig.PrimaryKey);
+        private static readonly CosmosClient cosmosClient = new CosmosClient(CosmosDbConfiguration.EndpointUri, CosmosDbConfiguration.PrimaryKey);
 
         [Function("CosmosDbCrud")]
         public async Task<HttpResponseData> CosmosDbCrud(
@@ -21,7 +20,7 @@ namespace AbpConf.ServerlessAPI
             HttpRequestData req,
             string id)
         {
-             Container container = cosmosClient.GetContainer(cosmosConfig.DatabaseName, cosmosConfig.ContainerName);
+             Container container = cosmosClient.GetContainer(CosmosDbConfiguration.DatabaseName, CosmosDbConfiguration.ContainerName);
 
             switch (req.Method)
             {

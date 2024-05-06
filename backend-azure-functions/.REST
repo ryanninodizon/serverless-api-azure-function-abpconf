@@ -1,16 +1,19 @@
 @baseUrl = http://localhost:7071/api/
 @rdpVersion = v1
 
-GET {{baseUrl}}items/ed56349b-819a-49ae-9bb1-045e7400f062 HTTP/1.1
+GET {{baseUrl}}items HTTP/1.1
+
+### Get Speficific
+GET {{baseUrl}}items/1 HTTP/1.1
 
 ### Add item
 POST {{baseUrl}}items HTTP/1.1
 content-type: application/json
 
 {
-  "id": "1",
-  "name": "Sample Item",
-  "category": "Sample Category"
+  "id": "2",
+  "name": "Sample Item123",
+  "category": "Sample Category123"
 }
 ### Delete item
 

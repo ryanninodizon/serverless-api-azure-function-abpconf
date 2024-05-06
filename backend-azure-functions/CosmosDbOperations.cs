@@ -16,7 +16,7 @@ namespace AbpConf.ServerlessAPI
             await response.WriteStringAsync("Item was added successfully");
             return response;
         }
-        public static async Task<HttpResponseData> ReadItemAsync(HttpRequestData req, Container container, string id)
+        public static async Task<HttpResponseData> ReadItemAsync(HttpRequestData req, Container container, string? id)
         {
             try
             {
