@@ -4,7 +4,8 @@ import {HousingLocation} from './housinglocation';
   providedIn: 'root',
 })
 export class HousingService {
-  url = 'http://localhost:3000/locations';
+  //url = 'http://localhost:3000/locations';
+  url = 'http://localhost:7071/api/items';
   async getAllHousingLocations(): Promise<HousingLocation[]> {
     const data = await fetch(this.url);
     return (await data.json()) ?? [];
@@ -14,7 +15,7 @@ export class HousingService {
     return (await data.json()) ?? {};
   }
   submitApplication(firstName: string, lastName: string, email: string) {
-    // tslint:disable-next-line
+    // tslint:disable-next-line 
     console.log(firstName, lastName, email);
   }
 }

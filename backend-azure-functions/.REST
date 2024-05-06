@@ -4,20 +4,25 @@
 GET {{baseUrl}}items HTTP/1.1
 
 ### Get Speficific
-GET {{baseUrl}}items/2 HTTP/1.1
+GET {{baseUrl}}items/222 HTTP/1.1
 
 ### Add item
 POST {{baseUrl}}items HTTP/1.1
 content-type: application/json
 
 {
-  "id": "222",
-  "name": "JONJONJON",
-  "category": "Sample Category1223"
-}
+            "id": "9",
+            "name": "Capital Safe Towns",
+            "city": "Portland",
+            "state": "OR",
+            "photo": "https://picsum.photos/id/164/1200/800",
+            "availableUnits": 6,
+            "wifi": true,
+            "laundry": true
+        }
 ### Delete item
 
-DELETE  {{baseUrl}}items/22 HTTP/1.1
+DELETE  {{baseUrl}}items/222 HTTP/1.1
 
 ### Update
 PUT  {{baseUrl}}items/22 HTTP/1.1
