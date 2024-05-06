@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "backend-azure-functions", "backend-azure-functions\backend-azure-functions.csproj", "{497EA3B5-F3EB-46D1-B69C-75452DD1C297}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{497EA3B5-F3EB-46D1-B69C-75452DD1C297}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{497EA3B5-F3EB-46D1-B69C-75452DD1C297}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{497EA3B5-F3EB-46D1-B69C-75452DD1C297}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{497EA3B5-F3EB-46D1-B69C-75452DD1C297}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E9B776E9-01DF-44CE-BA0A-23D88632AB3E}
+	EndGlobalSection
+EndGlobal
